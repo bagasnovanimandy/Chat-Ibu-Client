@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
-// import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
-// import {
-//   fetchRooms,
-//   setCurrentRoom,
-//   deleteRoom,
-// } from "../../store/slices/roomSlice";
-// import { fetchUsers } from "../../store/slices/userSlice";
+import {
+  fetchRooms,
+  setCurrentRoom,
+  deleteRoom,
+} from "../../store/slices/roomSlice";
+import { fetchUsers } from "../../store/slices/userSlice";
 import CreateRoomForm from "../../components/rooms/CreateRoomForm";
 import { LogOut, Plus, MessageCircle, Trash2, ArrowRight } from "lucide-react";
-
-import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const RoomsPage = () => {
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const { rooms, loading } = useSelector((state) => state.room);
   const { logout } = useAuth();
@@ -30,22 +29,51 @@ const RoomsPage = () => {
     }
   }, [isAuthenticated, navigate, dispatch]);
 
-  // const handleRoomClick = (room) => {
-  //   dispatch(setCurrentRoom(room));
-  //   navigate("/chat");
-  // };
+  const handleRoomClick = (room) => {
+    dispatch(setCurrentRoom(room));
+    navigate("/chat");
+  };
 
-  // const handleDeleteRoom = async (e, roomId) => {
-  //   e.stopPropagation();
-  //   if (window.confirm("Apakah Anda yakin ingin menghapus room ini?")) {
-  //     const result = await dispatch(deleteRoom(roomId));
-  //     if (deleteRoom.fulfilled.match(result)) {
-  //       dispatch(fetchRooms({ isActive: true }));
-  //     } else {
-  //       alert(`Gagal menghapus room: ${result.payload || "Unknown error"}`);
-  //     }
-  //   }
-  // };
+  const handleDeleteRoom = async (e, roomId) => {
+    e.stopPropagation();
+
+    const result = await Swal.fire({
+      icon: "warning",
+      title: "Hapus Room?",
+      text: "Apakah Anda yakin ingin menghapus room ini? Tindakan ini tidak dapat dibatalkan.",
+      showCancelButton: true,
+      confirmButtonText: "Ya, Hapus",
+      cancelButtonText: "Batal",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
+      const deleteResult = await dispatch(deleteRoom(roomId));
+
+      if (deleteRoom.fulfilled.match(deleteResult)) {
+        await Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Room berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+        dispatch(fetchRooms({ isActive: true }));
+      } else {
+        await Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: `Gagal menghapus room: ${
+            deleteResult.payload || "Unknown error"
+          }`,
+          confirmButtonText: "OK",
+          confirmButtonColor: "#075e54",
+        });
+      }
+    }
+  };
 
   const handleLogout = () => {
     logout();

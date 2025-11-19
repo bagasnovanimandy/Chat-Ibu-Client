@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import { roomApi } from "../../services/roomApi";
+import { roomApi } from "../../services/roomApi";
 
 // Async thunks
 export const fetchRooms = createAsyncThunk(
@@ -49,24 +49,24 @@ export const createRoom = createAsyncThunk(
   }
 );
 
-// export const deleteRoom = createAsyncThunk(
-//   "room/deleteRoom",
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       const response = await roomApi.deleteRoom(id);
-//       return {
-//         id,
-//         message: response.data.message || "Room deleted successfully",
-//       };
-//     } catch (error) {
-//       const errorMessage =
-//         error.response?.data?.message ||
-//         error.message ||
-//         "Failed to delete room";
-//       return rejectWithValue(errorMessage);
-//     }
-//   }
-// );
+export const deleteRoom = createAsyncThunk(
+  "room/deleteRoom",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await roomApi.deleteRoom(id);
+      return {
+        id,
+        message: response.data.message || "Room deleted successfully",
+      };
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to delete room";
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
 
 const roomSlice = createSlice({
   name: "room",
@@ -121,24 +121,24 @@ const roomSlice = createSlice({
         if (room) {
           state.rooms.unshift(room);
         }
+      })
+      // Delete room
+      .addCase(deleteRoom.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteRoom.fulfilled, (state, action) => {
+        state.loading = false;
+        state.rooms = state.rooms.filter((r) => r.id !== action.payload.id);
+        if (state.currentRoom?.id === action.payload.id) {
+          state.currentRoom = null;
+        }
+        state.error = null;
+      })
+      .addCase(deleteRoom.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
-    // Delete room
-    // .addCase(deleteRoom.pending, (state) => {
-    //   state.loading = true;
-    //   state.error = null;
-    // })
-    // .addCase(deleteRoom.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.rooms = state.rooms.filter((r) => r.id !== action.payload.id);
-    //   if (state.currentRoom?.id === action.payload.id) {
-    //     state.currentRoom = null;
-    //   }
-    //   state.error = null;
-    // })
-    // .addCase(deleteRoom.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action.payload;
-    // });
   },
 });
 
