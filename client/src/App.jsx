@@ -1,15 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router";
-import "./styles/App.css";
-import RoomsPage from "./pages/rooms/RoomsPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadUserFromStorage } from "./store/slices/authSlice";
+import AppRouter from "./router";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RoomsPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Load user from localStorage on app start
+    dispatch(loadUserFromStorage());
+  }, [dispatch]);
+
+  return <AppRouter />;
 }
 
 export default App;

@@ -1,29 +1,60 @@
-import { Link, useNavigate } from "react-router";
+// import { useEffect, useState } from "react";
+// import { useNavigate, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useAuth } from "../../hooks/useAuth";
+// import {
+//   fetchRooms,
+//   setCurrentRoom,
+//   deleteRoom,
+// } from "../../store/slices/roomSlice";
+// import { fetchUsers } from "../../store/slices/userSlice";
+// import CreateRoomForm from "../../components/room/CreateRoomForm";
 import { LogOut, Plus, MessageCircle, Trash2, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import CreateRoomForm from "../../components/rooms/CreateRoomForm";
 
-export default function RoomsPage() {
-  const navigate = useNavigate();
+import { Link } from "react-router";
 
-  const [user, setUser] = useState(null);
+const RoomsPage = () => {
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  // const { rooms, loading } = useSelector((state) => state.room);
+  const { logout } = useAuth();
+  // const [showCreateModal, setShowCreateModal] = useState(false);
 
-  const [showCreateModal, setShowCreateModal] = useState(false);
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     navigate("/login");
+  //   } else {
+  //     dispatch(fetchRooms({ isActive: true }));
+  //     dispatch(fetchUsers());
+  //   }
+  // }, [isAuthenticated, navigate, dispatch]);
 
-  const handleDeleteRoom = (e) => {
-    e.stopPropagation();
-  };
+  // const handleRoomClick = (room) => {
+  //   dispatch(setCurrentRoom(room));
+  //   navigate("/chat");
+  // };
 
-  const handleRoomClick = () => {
-    navigate("/chat");
-  };
+  // const handleDeleteRoom = async (e, roomId) => {
+  //   e.stopPropagation();
+  //   if (window.confirm("Apakah Anda yakin ingin menghapus room ini?")) {
+  //     const result = await dispatch(deleteRoom(roomId));
+  //     if (deleteRoom.fulfilled.match(result)) {
+  //       dispatch(fetchRooms({ isActive: true }));
+  //     } else {
+  //       alert(`Gagal menghapus room: ${result.payload || "Unknown error"}`);
+  //     }
+  //   }
+  // };
 
   const handleLogout = () => {
-    // Implement logout functionality here
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    logout();
     navigate("/login");
   };
+
+  // if (!isAuthenticated) {
+  //   return null;
+  // }
 
   return (
     <div
@@ -339,4 +370,6 @@ export default function RoomsPage() {
       )}
     </div>
   );
-}
+};
+
+export default RoomsPage;
