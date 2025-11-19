@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
@@ -8,7 +8,7 @@ import { useAuth } from "../../hooks/useAuth";
 //   deleteRoom,
 // } from "../../store/slices/roomSlice";
 // import { fetchUsers } from "../../store/slices/userSlice";
-// import CreateRoomForm from "../../components/room/CreateRoomForm";
+import CreateRoomForm from "../../components/rooms/CreateRoomForm";
 import { LogOut, Plus, MessageCircle, Trash2, ArrowRight } from "lucide-react";
 
 import { Link } from "react-router";
@@ -17,18 +17,18 @@ const RoomsPage = () => {
   // const navigate = useNavigate();
   // const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.auth);
-  // const { rooms, loading } = useSelector((state) => state.room);
+  const { rooms, loading } = useSelector((state) => state.room);
   const { logout } = useAuth();
-  // const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
-  // useEffect(() => {
-  //   if (!isAuthenticated) {
-  //     navigate("/login");
-  //   } else {
-  //     dispatch(fetchRooms({ isActive: true }));
-  //     dispatch(fetchUsers());
-  //   }
-  // }, [isAuthenticated, navigate, dispatch]);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else {
+      dispatch(fetchRooms({ isActive: true }));
+      dispatch(fetchUsers());
+    }
+  }, [isAuthenticated, navigate, dispatch]);
 
   // const handleRoomClick = (room) => {
   //   dispatch(setCurrentRoom(room));
@@ -52,9 +52,9 @@ const RoomsPage = () => {
     navigate("/login");
   };
 
-  // if (!isAuthenticated) {
-  //   return null;
-  // }
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <div

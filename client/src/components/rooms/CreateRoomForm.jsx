@@ -1,13 +1,25 @@
-import { Sparkles } from "lucide-react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createRoom, fetchRooms } from "../../store/slices/roomSlice";
+import { Sparkles } from "lucide-react";
+import { roomApi } from "../../services/roomApi";
 
-export default function CreateRoomForm({ onClose }) {
+const CreateRoomForm = ({ onClose }) => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.room);
+  const { user } = useSelector((state) => state.auth);
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     topic: "",
   });
   const [generating, setGenerating] = useState(false);
+
+  // Check if user is admin
+  if (user?.role !== "admin") {
+    return null;
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -19,21 +31,21 @@ export default function CreateRoomForm({ onClose }) {
   const handleGenerateWithAI = async () => {
     setGenerating(true);
     try {
-      // const response = await roomApi.generateRoomContent();
-      // if (response.data) {
-      //   setFormData({
-      //     name: response.data.name || "",
-      //     description: response.data.description || "",
-      //     topic: response.data.topic || "",
-      //   });
-      // }
+      const response = await roomApi.generateRoomContent();
+      if (response.data) {
+        setFormData({
+          name: response.data.name || "",
+          description: response.data.description || "",
+          topic: response.data.topic || "",
+        });
+      }
     } catch (error) {
-      // console.error("Failed to generate room content:", error);
-      // alert(
-      //   `Gagal generate dengan AI: ${
-      //     error.response?.data?.message || error.message || "Unknown error"
-      //   }`
-      // );
+      console.error("Failed to generate room content:", error);
+      alert(
+        `Gagal generate dengan AI: ${
+          error.response?.data?.message || error.message || "Unknown error"
+        }`
+      );
     } finally {
       setGenerating(false);
     }
@@ -41,25 +53,25 @@ export default function CreateRoomForm({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   const result = await dispatch(createRoom(formData));
-    //   if (createRoom.fulfilled.match(result)) {
-    //     dispatch(fetchRooms({ isActive: true }));
-    //     setFormData({
-    //       name: "",
-    //       description: "",
-    //       topic: "",
-    //     });
-    //     onClose();
-    //   } else if (createRoom.rejected.match(result)) {
-    //     // Error will be handled by Redux and shown in error state
-    //     console.error("Failed to create room:", result.payload);
-    //     alert(`Gagal membuat room: ${result.payload || "Unknown error"}`);
-    //   }
-    // } catch (error) {
-    //   console.error("Error creating room:", error);
-    //   alert(`Error: ${error.message || "Failed to create room"}`);
-    // }
+    try {
+      const result = await dispatch(createRoom(formData));
+      if (createRoom.fulfilled.match(result)) {
+        dispatch(fetchRooms({ isActive: true }));
+        setFormData({
+          name: "",
+          description: "",
+          topic: "",
+        });
+        onClose();
+      } else if (createRoom.rejected.match(result)) {
+        // Error will be handled by Redux and shown in error state
+        console.error("Failed to create room:", result.payload);
+        alert(`Gagal membuat room: ${result.payload || "Unknown error"}`);
+      }
+    } catch (error) {
+      console.error("Error creating room:", error);
+      alert(`Error: ${error.message || "Failed to create room"}`);
+    }
   };
 
   return (
@@ -326,4 +338,6 @@ export default function CreateRoomForm({ onClose }) {
       </div>
     </div>
   );
-}
+};
+
+export default CreateRoomForm;

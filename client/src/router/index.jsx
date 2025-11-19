@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RoomsPage from "../pages/rooms/RoomsPage";
 // import ChatPage from "../pages/chat/ChatPage";
 // import NotFoundPage from "../pages/common/NotFoundPage";
-// import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 const AppRouter = () => {
   return (
@@ -15,9 +15,9 @@ const AppRouter = () => {
         <Route
           path="/"
           element={
-            // <ProtectedRoute>
-            <RoomsPage />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <RoomsPage />
+            </ProtectedRoute>
           }
         />
         {/* <Route
