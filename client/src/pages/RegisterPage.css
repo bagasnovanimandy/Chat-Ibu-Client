@@ -122,6 +122,7 @@
 /* Register Button */
 .btn-register {
   background-color: #0a5d57;
+  color: white;
   border: none;
   padding: 10px;
   font-size: 14px;
@@ -132,6 +133,7 @@
 
 .btn-register:hover {
   background-color: #085048;
+  color: white;
 }
 
 .btn-register:focus {
