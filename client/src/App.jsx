@@ -1,14 +1,17 @@
-import { Routes, Route } from 'react-router-dom'
-import RegisterPage from './pages/auth/RegisterPage'
-import './App.css'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadUserFromStorage } from "./store/slices/authSlice";
+import AppRouter from "./router/";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/" element={<div>Welcome! Navigate to /register</div>} />
-    </Routes>
-  )
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Load user from localStorage on app start
+    dispatch(loadUserFromStorage());
+  }, [dispatch]);
+
+  return <AppRouter />;
 }
 
-export default App
+export default App;

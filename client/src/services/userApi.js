@@ -33,4 +33,3 @@ export const updateOnlineStatus = async (id, isOnline) => {
   });
   return response.data;
 };
-

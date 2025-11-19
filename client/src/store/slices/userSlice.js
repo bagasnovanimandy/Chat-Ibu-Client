@@ -7,7 +7,7 @@ export const fetchUsers = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const response = await getUsers(params);
-      return response.data?.data || response.data || response;
+      return response.data.data || response.data;
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || "Failed to fetch users"
@@ -15,6 +15,20 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
+
+// export const fetchUserById = createAsyncThunk(
+//   "user/fetchUserById",
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const response = await getUserById(id);
+//       return response.data;
+//     } catch (error) {
+//       return rejectWithValue(
+//         error.response?.data?.message || "Failed to fetch user"
+//       );
+//     }
+//   }
+// );
 
 const userSlice = createSlice({
   name: "user",
@@ -30,14 +44,22 @@ const userSlice = createSlice({
       const user = state.users.find((u) => u.id === userId);
       if (user) {
         user.isOnline = isOnline;
+      } else {
+        // If user not in state, we might need to fetch user details
+        // For now, just log it - user should be fetched on initial load
+        console.warn(
+          `User ${userId} not found in state when updating online status`
+        );
       }
     },
     addUser: (state, action) => {
       const user = action.payload;
       const existingUser = state.users.find((u) => u.id === user.id);
       if (existingUser) {
+        // Update existing user (including online status)
         Object.assign(existingUser, user);
       } else {
+        // Add new user
         state.users.push(user);
       }
     },
@@ -59,10 +81,12 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       });
+    // .addCase(fetchUserById.fulfilled, (state, action) => {
+    //   state.currentUser = action.payload.user;
+    // });
   },
 });
 
 export const { updateUserOnlineStatus, clearUsers, addUser } =
   userSlice.actions;
 export default userSlice.reducer;
-
