@@ -7,8 +7,8 @@ import { fetchUsers } from '../../store/slices/userSlice';
 import { setCurrentRoom } from '../../store/slices/roomSlice';
 import ChatWindow from '../../components/chat/ChatWindow';
 import UserList from '../../components/user/UserList';
-import RoomList from '../../components/room/RoomList';
-import CreateRoomForm from '../../components/room/CreateRoomForm';
+import RoomList from '../../components/rooms/RoomList';
+import CreateRoomForm from '../../components/rooms/CreateRoomForm';
 import { LogOut, Plus, MessageCircle } from 'lucide-react';
 
 const ChatPage = () => {
