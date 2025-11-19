@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useSocket } from "../../hooks/useSocket";
 import { useAuth } from "../../hooks/useAuth";
 import { fetchUsers } from "../../store/slices/userSlice";
 import { setCurrentRoom } from "../../store/slices/roomSlice";
@@ -18,8 +17,6 @@ const ChatPage = () => {
   const { rooms, currentRoom } = useSelector((state) => state.room);
   const { logout } = useAuth();
   const [showCreateModal, setShowCreateModal] = useState(false);
-
-  useSocket();
 
   useEffect(() => {
     if (!isAuthenticated) {
