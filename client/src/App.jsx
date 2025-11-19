@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUserFromStorage } from "./store/slices/authSlice";
+import { SocketProvider } from "./context/socket";
 import AppRouter from "./router";
 
 function App() {
@@ -11,7 +12,11 @@ function App() {
     dispatch(loadUserFromStorage());
   }, [dispatch]);
 
-  return <AppRouter />;
+  return (
+    <SocketProvider>
+      <AppRouter />
+    </SocketProvider>
+  );
 }
 
 export default App;
