@@ -1,0 +1,163 @@
+/* Register Page Background */
+.register-page {
+  background-color: #e8e8ed;
+  min-height: 100vh;
+}
+
+/* Card Styling */
+.register-card {
+  border-radius: 16px;
+  border: none;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Logo Circle */
+.logo-circle {
+  width: 44px;
+  height: 44px;
+  background-color: #0a5d57;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  color: white;
+}
+
+/* Title Styling */
+.register-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #2c2c2e;
+  margin-bottom: 4px;
+}
+
+.register-subtitle {
+  font-size: 12px;
+  color: #8e8e93;
+  margin-bottom: 24px;
+}
+
+/* Form Labels */
+.label-text {
+  font-size: 12px;
+  color: #636366;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+/* Input Fields */
+.input-field {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none !important;
+  color: #2c2c2e;
+}
+
+.input-field:focus {
+  box-shadow: 0 0 0 1px rgba(10, 93, 87, 0.3) !important;
+}
+
+.input-field::placeholder {
+  color: #a0a0a5;
+}
+
+/* Different background colors for inputs */
+.input-name {
+  background-color: #f2f2f7 !important;
+  padding-right: 36px;
+}
+
+.input-email {
+  background-color: #e8eaf6 !important;
+}
+
+.input-password {
+  background-color: #f2f2f7 !important;
+  padding-right: 36px;
+}
+
+/* Input Icons */
+.input-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: #c7c7cc;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.input-icon-eye:hover {
+  background-color: #b0b0b5;
+}
+
+.input-icon-square {
+  cursor: default;
+  pointer-events: none;
+}
+
+.square-icon {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #8e8e93;
+  border-radius: 2px;
+}
+
+.icon-color {
+  color: #636366;
+}
+
+/* Register Button */
+.btn-register {
+  background-color: #0a5d57;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-register:hover {
+  background-color: #085048;
+}
+
+.btn-register:focus {
+  box-shadow: none;
+}
+
+/* Login Link */
+.login-link {
+  font-size: 12px;
+  color: #636366;
+}
+
+.login-link-anchor {
+  color: #0a5d57;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link-anchor:hover {
+  color: #085048;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .register-card {
+    max-width: 100%;
+  }
+}

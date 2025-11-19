@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, MessageCircle } from 'lucide-react';
+import './RegisterPage.css';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -34,172 +35,148 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#e8e8ed' }}>
-      <div className="bg-white rounded-2xl shadow-sm w-full max-w-[300px] px-7 py-8">
-        {/* Logo/Icon */}
-        <div className="flex justify-center mb-3">
-          <div 
-            className="w-11 h-11 rounded-full flex items-center justify-center" 
-            style={{ backgroundColor: '#0a5d57' }}
-          >
-            <span className="text-white text-lg italic font-light">p</span>
-          </div>
-        </div>
+    <div className="register-page">
+      <div className="container">
+        <div className="row justify-content-center align-items-center min-vh-100 py-4">
+          <div className="col-12 col-sm-10 col-md-6 col-lg-4">
+            <div className="card register-card shadow-sm">
+              <div className="card-body p-4">
+                {/* Logo/Icon */}
+                <div className="text-center mb-3">
+                  <div className="logo-circle mx-auto">
+                    <MessageCircle size={24} className="logo-icon" strokeWidth={2} />
+                  </div>
+                </div>
 
-        {/* Title */}
-        <h1 className="text-xl font-normal text-center mb-0.5" style={{ color: '#2c2c2e' }}>
-          Chat Ibu-Ibu
-        </h1>
-        <p className="text-center text-xs mb-6" style={{ color: '#8e8e93' }}>
-          Buat akun baru
-        </p>
+                {/* Title */}
+                <h1 className="register-title text-center mb-1">
+                  Chat Ibu-Ibu
+                </h1>
+                <p className="register-subtitle text-center mb-4">
+                  Buat akun baru
+                </p>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-3.5">
-          {/* Nama Field */}
-          <div>
-            <label htmlFor="name" className="block text-xs mb-1.5" style={{ color: '#636366' }}>
-              Nama
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="masukkan nama Anda"
-                className="w-full px-3 py-2 text-sm rounded-md border-0 focus:outline-none focus:ring-1 placeholder:text-gray-400"
-                style={{ 
-                  backgroundColor: '#f2f2f7',
-                  color: '#2c2c2e'
-                }}
-                required
-              />
-              <div 
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded"
-                style={{ backgroundColor: '#c7c7cc' }}
-              >
-                <div className="w-3 h-3 border rounded" style={{ borderColor: '#8e8e93' }}></div>
+                {/* Form */}
+                <form onSubmit={handleSubmit}>
+                  {/* Nama Field */}
+                  <div className="mb-3">
+                    <label htmlFor="name" className="form-label label-text">
+                      Nama
+                    </label>
+                    <div className="position-relative">
+                      <input
+                        type="text"
+                        className="form-control input-field input-name"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="masukkan nama Anda"
+                        required
+                      />
+                      <div className="input-icon input-icon-square">
+                        <div className="square-icon"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Email Field */}
+                  <div className="mb-3">
+                    <label htmlFor="email" className="form-label label-text">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control input-field input-email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="siti@example.com"
+                      required
+                    />
+                  </div>
+
+                  {/* Password Field */}
+                  <div className="mb-3">
+                    <label htmlFor="password" className="form-label label-text">
+                      Password
+                    </label>
+                    <div className="position-relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        className="form-control input-field input-password"
+                        id="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        placeholder="••••••••••"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="input-icon input-icon-eye"
+                      >
+                        {showPassword ? 
+                          <EyeOff size={11} className="icon-color" /> : 
+                          <Eye size={11} className="icon-color" />
+                        }
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Confirm Password Field */}
+                  <div className="mb-3">
+                    <label htmlFor="confirmPassword" className="form-label label-text">
+                      Konfirmasi Password
+                    </label>
+                    <div className="position-relative">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        className="form-control input-field input-password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        value={formData.confirmPassword}
+                        onChange={handleChange}
+                        placeholder="Ulangi password Anda"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="input-icon input-icon-eye"
+                      >
+                        {showConfirmPassword ? 
+                          <EyeOff size={11} className="icon-color" /> : 
+                          <Eye size={11} className="icon-color" />
+                        }
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="btn btn-register w-100 mt-3"
+                  >
+                    Daftar
+                  </button>
+                </form>
+
+                {/* Login Link */}
+                <p className="text-center login-link mt-3 mb-0">
+                  Sudah punya akun?{' '}
+                  <a href="/login" className="login-link-anchor">
+                    Login di sini
+                  </a>
+                </p>
               </div>
             </div>
           </div>
-
-          {/* Email Field */}
-          <div>
-            <label htmlFor="email" className="block text-xs mb-1.5" style={{ color: '#636366' }}>
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="siti@example.com"
-              className="w-full px-3 py-2 text-sm rounded-md border-0 focus:outline-none focus:ring-1 placeholder:text-gray-400"
-              style={{ 
-                backgroundColor: '#e8eaf6',
-                color: '#2c2c2e'
-              }}
-              required
-            />
-          </div>
-
-          {/* Password Field */}
-          <div>
-            <label htmlFor="password" className="block text-xs mb-1.5" style={{ color: '#636366' }}>
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="••••••••••"
-                className="w-full px-3 py-2 text-sm rounded-md border-0 focus:outline-none focus:ring-1 pr-9 placeholder:text-gray-400"
-                style={{ 
-                  backgroundColor: '#f2f2f7',
-                  color: '#2c2c2e'
-                }}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded transition-colors"
-                style={{ backgroundColor: '#c7c7cc' }}
-              >
-                {showPassword ? 
-                  <EyeOff size={11} style={{ color: '#636366' }} strokeWidth={2.5} /> : 
-                  <Eye size={11} style={{ color: '#636366' }} strokeWidth={2.5} />
-                }
-              </button>
-            </div>
-          </div>
-
-          {/* Confirm Password Field */}
-          <div>
-            <label htmlFor="confirmPassword" className="block text-xs mb-1.5" style={{ color: '#636366' }}>
-              Konfirmasi Password
-            </label>
-            <div className="relative">
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="Ulangi password Anda"
-                className="w-full px-3 py-2 text-sm rounded-md border-0 focus:outline-none focus:ring-1 pr-9 placeholder:text-gray-400"
-                style={{ 
-                  backgroundColor: '#f2f2f7',
-                  color: '#2c2c2e'
-                }}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded transition-colors"
-                style={{ backgroundColor: '#c7c7cc' }}
-              >
-                {showConfirmPassword ? 
-                  <EyeOff size={11} style={{ color: '#636366' }} strokeWidth={2.5} /> : 
-                  <Eye size={11} style={{ color: '#636366' }} strokeWidth={2.5} />
-                }
-              </button>
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full text-white font-medium py-2.5 rounded-lg transition-colors duration-200 mt-5 text-sm"
-            style={{ 
-              backgroundColor: '#0a5d57',
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#085048'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#0a5d57'}
-          >
-            Daftar
-          </button>
-        </form>
-
-        {/* Login Link */}
-        <p className="text-center text-xs mt-4" style={{ color: '#636366' }}>
-          Sudah punya akun?{' '}
-          <a 
-            href="/login" 
-            className="font-medium"
-            style={{ color: '#0a5d57' }}
-          >
-            Login di sini
-          </a>
-        </p>
+        </div>
       </div>
     </div>
   );
 }
+
