@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import RegisterForm from '../../components/auth/RegisterForm';
+import LoginForm from '../../components/auth/LoginForm';
 import { MessageCircle } from 'lucide-react';
 
-const RegisterPage = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.auth);
   
@@ -33,9 +33,9 @@ const RegisterPage = () => {
                     <MessageCircle className="w-8 h-8 text-white" />
                   </div>
                   <h1 className="h3 fw-normal mb-2" style={{ color: '#111b21', fontSize: '28px' }}>Chat Ibu-Ibu</h1>
-                  <p style={{ color: '#667781', fontSize: '14px' }}>Buat akun baru</p>
+                  <p style={{ color: '#667781', fontSize: '14px' }}>Masuk ke akun Anda</p>
                 </div>
-                <RegisterForm />
+                <LoginForm />
               </div>
             </div>
           </div>
@@ -45,5 +45,5 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
 
