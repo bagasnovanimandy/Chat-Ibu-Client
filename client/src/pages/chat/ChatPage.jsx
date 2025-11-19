@@ -18,9 +18,9 @@ const ChatPage = () => {
   const { rooms, currentRoom } = useSelector((state) => state.room);
   const { logout } = useAuth();
   const [showCreateModal, setShowCreateModal] = useState(false);
-  
+
   useSocket();
-  
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');
@@ -29,32 +29,32 @@ const ChatPage = () => {
       dispatch(fetchUsers());
     }
   }, [isAuthenticated, navigate, dispatch]);
-  
+
   // Redirect to rooms page if no room is selected
   useEffect(() => {
     if (rooms.length > 0 && !currentRoom) {
       navigate('/');
     }
   }, [rooms, currentRoom, navigate]);
-  
+
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
-  
+
   if (!isAuthenticated) {
     return null;
   }
-  
+
   return (
     <div className="d-flex flex-column" style={{ height: '100vh', overflow: 'hidden' }}>
       {/* Header - WhatsApp Style */}
       <nav className="flex-shrink-0" style={{ backgroundColor: '#075e54', color: 'white', padding: '10px 16px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <div className="d-flex align-items-center justify-content-between">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="text-decoration-none d-flex align-items-center gap-2"
-            style={{ 
+            style={{
               cursor: 'pointer',
               color: 'white',
               transition: 'opacity 0.2s ease'
@@ -73,8 +73,8 @@ const ChatPage = () => {
             <span className="small" style={{ color: 'rgba(255,255,255,0.9)' }}>
               {user?.name} {user?.role === 'admin' && <span style={{ fontSize: '11px', backgroundColor: 'rgba(255,255,255,0.2)', padding: '2px 6px', borderRadius: '10px' }}>Admin</span>}
             </span>
-            <button 
-              onClick={handleLogout} 
+            <button
+              onClick={handleLogout}
               className="btn p-0 border-0"
               style={{ color: 'white', padding: '8px' }}
               title="Logout"
@@ -84,7 +84,7 @@ const ChatPage = () => {
           </div>
         </div>
       </nav>
-      
+
       {/* Main Content - WhatsApp Style */}
       <div className="d-flex flex-grow-1" style={{ minHeight: 0, overflow: 'hidden', backgroundColor: '#f0f2f5' }}>
         <div className="d-flex flex-column bg-white flex-shrink-0" style={{ width: '280px', maxWidth: '280px', borderRight: '1px solid #e9edef', overflow: 'hidden' }}>
@@ -121,7 +121,7 @@ const ChatPage = () => {
           <UserList />
         </div>
       </div>
-      
+
       {/* Create Room Modal */}
       {showCreateModal && (
         <CreateRoomForm onClose={() => setShowCreateModal(false)} />
