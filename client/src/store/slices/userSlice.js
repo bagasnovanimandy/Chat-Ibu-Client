@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUsers, getUserById, updateUser } from "../../services/userApi";
+import { getUsers } from "../../services/userApi";
 
 // Async thunks
 export const fetchUsers = createAsyncThunk(
@@ -15,20 +15,6 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
-
-// export const fetchUserById = createAsyncThunk(
-//   "user/fetchUserById",
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       const response = await getUserById(id);
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(
-//         error.response?.data?.message || "Failed to fetch user"
-//       );
-//     }
-//   }
-// );
 
 const userSlice = createSlice({
   name: "user",
