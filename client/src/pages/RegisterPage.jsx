@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff, MessageCircle, Keyboard } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './RegisterPage.css';
 
 export default function RegisterPage() {
@@ -170,9 +171,9 @@ export default function RegisterPage() {
           {/* Login Link */}
           <p className="text-center login-link mt-3 mb-0">
             Sudah punya akun?{' '}
-            <a href="/login" className="login-link-anchor">
+            <Link to="/login" className="login-link-anchor">
               Login di sini
-            </a>
+            </Link>
           </p>
         </div>
       </div>
