@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import RegisterPage from "../pages/auth/RegisterPage";
 import RoomsPage from "../pages/rooms/RoomsPage";
 // import ChatPage from "../pages/chat/ChatPage";
-// import NotFoundPage from "../pages/common/NotFoundPage";
+import NotFoundPage from "../pages/common/NotFoundPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const AppRouter = () => {
@@ -27,8 +27,8 @@ const AppRouter = () => {
               <ChatPage />
             </ProtectedRoute>
           }
-        />
-        <Route path="*" element={<NotFoundPage />} /> */}
+        /> */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
