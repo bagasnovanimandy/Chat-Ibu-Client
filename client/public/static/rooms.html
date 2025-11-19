@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rooms - Chat Ibu-Ibu</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="main-layout">
+      <!-- Header -->
+      <header class="header">
+        <div class="flex align-center justify-between">
+          <a href="rooms.html" class="header-title">
+            <svg
+              class="header-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
+            </svg>
+            Chat Ibu-Ibu
+          </a>
+          <div class="header-user">
+            <span>Siti Nurhaliza <span class="user-badge">Admin</span></span>
+            <button class="header-btn" title="Buat Room">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+            <button class="header-btn" title="Logout">
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="rooms-page">
+        <div class="rooms-header">
+          <h2 class="rooms-title">Pilih Room Chat</h2>
+          <p class="rooms-subtitle">Pilih room untuk memulai diskusi</p>
+        </div>
+
+        <!-- Rooms Grid -->
+        <div class="rooms-grid">
+          <!-- Room Card 1 -->
+          <div class="room-card">
+            <button class="delete-btn" title="Hapus Room">
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                ></path>
+              </svg>
+            </button>
+
+            <h3 class="room-card-title">Resep Masakan Nusantara</h3>
+            <p class="room-card-creator">Oleh Bu Ani</p>
+
+            <div class="room-card-topic-box">
+              <p class="room-card-topic-label">Topik:</p>
+              <p class="room-card-topic-text">
+                Berbagi resep masakan tradisional Indonesia
+              </p>
+            </div>
+
+            <p class="room-card-description">
+              Mari berbagi resep masakan favorit keluarga, mulai dari rendang,
+              soto, hingga kue-kue tradisional. Semua ibu bisa berkontribusi!
+            </p>
+
+            <div class="room-card-footer">
+              <span class="room-card-enter">Klik untuk masuk</span>
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Room Card 2 -->
+          <div class="room-card">
+            <button class="delete-btn" title="Hapus Room">
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                ></path>
+              </svg>
+            </button>
+
+            <h3 class="room-card-title">Tips Parenting Anak Usia Dini</h3>
+            <p class="room-card-creator">Oleh Bu Rina</p>
+
+            <div class="room-card-topic-box">
+              <p class="room-card-topic-label">Topik:</p>
+              <p class="room-card-topic-text">
+                Mendidik dan mengasuh anak balita
+              </p>
+            </div>
+
+            <p class="room-card-description">
+              Diskusi seputar cara mendidik anak balita, mengatasi tantrum, dan
+              tips parenting lainnya untuk para ibu muda.
+            </p>
+
+            <div class="room-card-footer">
+              <span class="room-card-enter">Klik untuk masuk</span>
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Room Card 3 -->
+          <div class="room-card">
+            <button class="delete-btn" title="Hapus Room">
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                ></path>
+              </svg>
+            </button>
+
+            <h3 class="room-card-title">
+              Kumpulan Bisnis Online Ibu Rumah Tangga
+            </h3>
+            <p class="room-card-creator">Oleh Bu Sari</p>
+
+            <div class="room-card-topic-box">
+              <p class="room-card-topic-label">Topik:</p>
+              <p class="room-card-topic-text">Peluang usaha dari rumah</p>
+            </div>
+
+            <p class="room-card-description">
+              Berbagi ide bisnis online seperti jualan kue, fashion hijab,
+              skincare, dan lainnya yang bisa dikerjakan dari rumah.
+            </p>
+
+            <div class="room-card-footer">
+              <span class="room-card-enter">Klik untuk masuk</span>
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Room Card 4 -->
+          <div class="room-card">
+            <button class="delete-btn" title="Hapus Room">
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                ></path>
+              </svg>
+            </button>
+
+            <h3 class="room-card-title">Kesehatan dan Kebugaran Ibu</h3>
+            <p class="room-card-creator">Oleh Bu Dewi</p>
+
+            <div class="room-card-topic-box">
+              <p class="room-card-topic-label">Topik:</p>
+              <p class="room-card-topic-text">
+                Menjaga kesehatan tubuh dan mental
+              </p>
+            </div>
+
+            <p class="room-card-description">
+              Tips olahraga ringan, menu diet sehat, dan cara menjaga kesehatan
+              mental untuk ibu-ibu yang sibuk dengan rutinitas harian.
+            </p>
+
+            <div class="room-card-footer">
+              <span class="room-card-enter">Klik untuk masuk</span>
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Room Card 5 -->
+          <div class="room-card">
+            <button class="delete-btn" title="Hapus Room">
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                ></path>
+              </svg>
+            </button>
+
+            <h3 class="room-card-title">Hobi dan Kerajinan Tangan</h3>
+            <p class="room-card-creator">Oleh Bu Lina</p>
+
+            <div class="room-card-topic-box">
+              <p class="room-card-topic-label">Topik:</p>
+              <p class="room-card-topic-text">DIY dan kreativitas</p>
+            </div>
+
+            <p class="room-card-description">
+              Berbagi tutorial membuat kerajinan tangan, craft, dan DIY untuk
+              dekorasi rumah atau hadiah unik.
+            </p>
+
+            <div class="room-card-footer">
+              <span class="room-card-enter">Klik untuk masuk</span>
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Room Card 6 -->
+          <div class="room-card">
+            <button class="delete-btn" title="Hapus Room">
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                ></path>
+              </svg>
+            </button>
+
+            <h3 class="room-card-title">Traveling Bersama Keluarga</h3>
+            <p class="room-card-creator">Oleh Bu Maya</p>
+
+            <div class="room-card-topic-box">
+              <p class="room-card-topic-label">Topik:</p>
+              <p class="room-card-topic-text">
+                Destinasi wisata ramah keluarga
+              </p>
+            </div>
+
+            <p class="room-card-description">
+              Rekomendasi tempat wisata yang cocok untuk keluarga, tips
+              traveling dengan anak, dan pengalaman liburan seru.
+            </p>
+
+            <div class="room-card-footer">
+              <span class="room-card-enter">Klik untuk masuk</span>
+              <svg
+                class="icon-sm"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

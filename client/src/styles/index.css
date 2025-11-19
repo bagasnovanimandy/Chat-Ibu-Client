@@ -1,0 +1,199 @@
+/* Bootstrap is loaded from CDN in index.html */
+
+/* Custom Bootstrap overrides and additional styles - WhatsApp Theme */
+:root {
+  --bs-primary: #075e54;
+  --bs-primary-rgb: 7, 94, 84;
+  --bs-secondary: #075e54;
+  --bs-secondary-rgb: 7, 94, 84;
+  --whatsapp-green: #075e54;
+  --whatsapp-light-green: #075e54;
+  --whatsapp-bg: #f0f2f5;
+  --whatsapp-chat-bg: #e5ddd5;
+  --whatsapp-white: #ffffff;
+  --whatsapp-text: #303030;
+  --whatsapp-text-light: #667781;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, Ubuntu, Cantarell, 'Fira Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--whatsapp-bg);
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Hover shadow effect */
+.hover-shadow {
+  transition: all 0.3s ease;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Gap utility for Bootstrap */
+.gap-1 { gap: 0.25rem !important; }
+.gap-2 { gap: 0.5rem !important; }
+.gap-3 { gap: 1rem !important; }
+.gap-4 { gap: 1.5rem !important; }
+.gap-5 { gap: 3rem !important; }
+
+/* Custom rounded corners */
+.rounded-4 {
+  border-radius: 1rem !important;
+}
+
+/* Object fit for images */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Text truncate with line clamp */
+.text-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Enhanced card hover effects */
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Link hover effects */
+a.text-decoration-none:hover {
+  text-decoration: none !important;
+}
+
+/* Navbar sticky enhancement */
+.navbar.sticky-top {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Button enhancements */
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Badge enhancements */
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+}
+
+/* Icon container enhancements */
+.bg-primary.bg-opacity-10 {
+  transition: all 0.2s ease;
+}
+
+.bg-primary.bg-opacity-10:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
+  transform: scale(1.1);
+}
+
+/* Room card specific enhancements */
+.card-body {
+  position: relative;
+}
+
+/* Smooth page transitions */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states */
+.btn:focus,
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25) !important;
+}
+
+/* Loading spinner enhancement */
+.spinner-border {
+  animation: spinner-border 0.75s linear infinite;
+}
+
+/* WhatsApp-like chat styles */
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Chat message bubble styles */
+.chat-bubble-sent {
+  background-color: #dcf8c6;
+  border-radius: 7.5px 7.5px 0 7.5px;
+}
+
+.chat-bubble-received {
+  background-color: #ffffff;
+  border-radius: 7.5px 7.5px 7.5px 0;
+}
+

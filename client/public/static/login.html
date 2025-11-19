@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Chat Ibu-Ibu</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <!-- Logo & Title -->
+        <div class="text-center">
+          <div class="auth-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
+            </svg>
+          </div>
+          <h1 class="auth-title">Chat Ibu-Ibu</h1>
+          <p class="auth-subtitle">Masuk ke akun Anda</p>
+        </div>
+
+        <!-- Login Form -->
+        <form>
+          <!-- Error Message (hidden by default) -->
+          <!-- <div class="error-message">
+                    Email atau password salah
+                </div> -->
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="masukkan email Anda"
+              required
+            />
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="masukkan password Anda"
+              required
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-full mb-3">
+            Login
+          </button>
+
+          <!-- Register Link -->
+          <p class="text-center text-muted small">
+            Belum punya akun?
+            <a href="register.html" class="auth-link">Daftar di sini</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
