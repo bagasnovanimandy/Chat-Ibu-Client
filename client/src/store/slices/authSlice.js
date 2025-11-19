@@ -1,39 +1,39 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import {
-//   register as registerApi,
-//   login as loginApi,
-// } from "../../services/userApi";
+import {
+  register as registerApi,
+  login as loginApi,
+} from "../../services/userApi";
 
 // Async thunks
-// export const registerAsync = createAsyncThunk(
-//   "auth/register",
-//   async (userData, { rejectWithValue }) => {
-//     try {
-//       const response = await registerApi(userData);
-//       localStorage.setItem("token", response.access_token);
-//       localStorage.setItem("user", JSON.stringify(response.user));
-//       return response;
-//     } catch (error) {
-//       return rejectWithValue(
-//         error.response?.data?.message || "Registration failed"
-//       );
-//     }
-//   }
-// );
+export const registerAsync = createAsyncThunk(
+  "auth/register",
+  async (userData, { rejectWithValue }) => {
+    try {
+      const response = await registerApi(userData);
+      localStorage.setItem("token", response.access_token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+      return response;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Registration failed"
+      );
+    }
+  }
+);
 
-// export const loginAsync = createAsyncThunk(
-//   "auth/login",
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       const response = await loginApi(credentials);
-//       localStorage.setItem("token", response.access_token);
-//       localStorage.setItem("user", JSON.stringify(response.user));
-//       return response;
-//     } catch (error) {
-//       return rejectWithValue(error.response?.data?.message || "Login failed");
-//     }
-//   }
-// );
+export const loginAsync = createAsyncThunk(
+  "auth/login",
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const response = await loginApi(credentials);
+      localStorage.setItem("token", response.access_token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || "Login failed");
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -65,41 +65,41 @@ const authSlice = createSlice({
       state.error = null;
     },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     // Register
-  //     .addCase(registerAsync.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = null;
-  //     })
-  //     .addCase(registerAsync.fulfilled, (state, action) => {
-  //       state.loading = false;
-  //       state.user = action.payload.user;
-  //       state.token = action.payload.access_token;
-  //       state.isAuthenticated = true;
-  //       state.error = null;
-  //     })
-  //     .addCase(registerAsync.rejected, (state, action) => {
-  //       state.loading = false;
-  //       state.error = action.payload;
-  //     })
-  //     // Login
-  //     .addCase(loginAsync.pending, (state) => {
-  //       state.loading = true;
-  //       state.error = null;
-  //     })
-  //     .addCase(loginAsync.fulfilled, (state, action) => {
-  //       state.loading = false;
-  //       state.user = action.payload.user;
-  //       state.token = action.payload.access_token;
-  //       state.isAuthenticated = true;
-  //       state.error = null;
-  //     })
-  //     .addCase(loginAsync.rejected, (state, action) => {
-  //       state.loading = false;
-  //       state.error = action.payload;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      // Register
+      .addCase(registerAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(registerAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+        state.token = action.payload.access_token;
+        state.isAuthenticated = true;
+        state.error = null;
+      })
+      .addCase(registerAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Login
+      .addCase(loginAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(loginAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+        state.token = action.payload.access_token;
+        state.isAuthenticated = true;
+        state.error = null;
+      })
+      .addCase(loginAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { logout, loadUserFromStorage, clearError } = authSlice.actions;
